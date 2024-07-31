@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:googleapis/youtube/v3.dart';
 import 'package:http/io_client.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:upload_youtube/playVideo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -151,10 +152,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView.builder(
           itemBuilder: (context, index) {
             return ListTile(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => PlayVideo(
+                    videoId: videos[index]["snippet"]["resourceId"]["videoId"],
+                  ),
+                ));
+              },
               leading: Container(
-                height: 120,width: 120,
-                child: Image.network(videos[index]["snippet"]["thumbnails"]["default"]["url"])
-              ),
+                  height: 120,
+                  width: 120,
+                  child: Image.network(videos[index]["snippet"]["thumbnails"]
+                      ["default"]["url"])),
               title: Text(videos[index]["snippet"]["title"]),
               subtitle: Text(videos[index]["snippet"]["description"]),
             );

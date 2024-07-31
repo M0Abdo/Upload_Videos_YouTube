@@ -39,6 +39,7 @@ dependencies:
   http: ^1.2.1
   image_picker: ^1.1.2
   googleapis: ^13.2.0
+  youtube_player_flutter: ^9.0.1
 
 dev_dependencies:
   flutter_test:
